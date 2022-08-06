@@ -5,8 +5,8 @@
 
 FROM alpine
 
-RUN apk add --no-cache curl ca-certificates bash git
-RUN apk add --no-cache helm kubectl webhook --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing
+RUN apk add --no-cache curl ca-certificates bash git jq yq webhook
+RUN apk add --no-cache helm kubectl --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing
 
 RUN helm plugin install https://github.com/databus23/helm-diff && rm -rf /tmp/helm-*
 RUN helm plugin install https://github.com/quintush/helm-unittest && rm -rf /tmp/helm-*
