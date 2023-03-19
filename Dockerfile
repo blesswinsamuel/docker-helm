@@ -3,10 +3,10 @@
 # RUN go install github.com/ncarlier/webhookd@v1.15.0
 # RUN which webhookd
 
-FROM alpine
+FROM alpine:3.17
 
-RUN apk add --no-cache curl ca-certificates bash git jq yq webhook
-RUN apk add --no-cache helm kubectl --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing
+RUN apk add --no-cache helm curl ca-certificates bash git jq yq webhook go-task
+RUN apk add --no-cache kubectl --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing
 
 RUN helm plugin install https://github.com/databus23/helm-diff && rm -rf /tmp/helm-*
 RUN helm plugin install https://github.com/quintush/helm-unittest && rm -rf /tmp/helm-*
